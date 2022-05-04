@@ -1,0 +1,24 @@
+// Script utilizando para criação do banco de dados
+
+use sistemadecadastro;
+describe colaboradores;
+
+create table colaboradores (
+	cpf varchar(11),
+	nome varchar(50),
+    telefone varchar(18),
+    email varchar(100)
+);
+
+insert into colaboradores (cpf, nome, telefone, email) values ('00100200304', 'Larissa Souza', '92 99313-1313', 'lari@mobicare.com');
+insert into colaboradores (cpf, nome, telefone, email) values ('00100200305', 'Lucas Martims', '92 99415-1515', 'lucas@mobicare.com');
+
+alter table colaboradores add id int primary key auto_increment;
+
+alter table colaboradores add column setor int;
+alter table colaboradores drop column id;
+
+alter table colaboradores add foreign key (setor) references setores(id);
+update colaboradores set setor = '2' where id = '6';
+select * from colaboradores;
+select * from setores;
